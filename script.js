@@ -65,3 +65,35 @@ document.getElementById("Submit").addEventListener("click", function(event) {
     })
 
 })
+
+document.getElementById("Update").addEventListener("click", function(event) {
+    event.preventDefault();
+    const id = document.getElementById("id").value; // Get the ID from the input field
+    if (!id) {
+        alert('Please enter an ID to update.');
+        return;
+    }
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', `https://jsonplaceholder.typicode.com/posts/${id}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                console.log('Data updated successfully:', data);
+                alert(`Data updated successfully! \n title: ${data.title} \n body: ${data.body}`);
+                displayData(data);
+                document.getElementById("form").reset();
+            } 
+            else {
+                console.error('Error updating data:', xhr.statusText);
+                alert('Error updating data ' + xhr.statusText);
+            }
+        }
+    };
+    const updatedData = {
+        title: document.getElementById("title").value,
+        body: document.getElementById("body").value
+    };
+    xhr.send(JSON.stringify(updatedData));
+})
