@@ -38,6 +38,10 @@ document.getElementById("XHR").addEventListener("click", function() {
 
 document.getElementById("Submit").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent the form from submitting the default way
+    if (!document.getElementById("title").value || !document.getElementById("body").value) {
+        alert('Please fill in all fields before updating.');
+        return;
+    }
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
@@ -62,6 +66,7 @@ document.getElementById("Submit").addEventListener("click", function(event) {
     .catch(error => 
     {
         console.error('Error submitting data:', error)
+        alert('Error submitting data ' + error);
     })
 
 })
@@ -69,8 +74,13 @@ document.getElementById("Submit").addEventListener("click", function(event) {
 document.getElementById("Update").addEventListener("click", function(event) {
     event.preventDefault();
     const id = document.getElementById("id").value; // Get the ID from the input field
-    if (!id) {
-        alert('Please enter an ID to update.');
+    if (!id || isNaN(id) || parseInt(id) <= 0) {
+        alert('Invaled ID. Please enter a valid number.');
+        return;
+    }
+
+    if (!document.getElementById("title").value || !document.getElementById("body").value) {
+        alert('Please fill in all fields before updating.');
         return;
     }
     const xhr = new XMLHttpRequest();
@@ -85,6 +95,13 @@ document.getElementById("Update").addEventListener("click", function(event) {
                 displayData(data);
                 document.getElementById("form").reset();
             } 
+            else if (xhr.status === 404) {
+                console.error('Error: Post not found');
+                alert('Error: Post not found');
+            } else if (xhr.status === 500) {
+                console.error('Server Error', xhr.status);
+                alert('Server Error');
+            }
             else {
                 console.error('Error updating data:', xhr.statusText);
                 alert('Error updating data ' + xhr.statusText);
