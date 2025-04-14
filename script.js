@@ -35,3 +35,33 @@ document.getElementById("XHR").addEventListener("click", function() {
     };
     xhr.send();
 })
+
+document.getElementById("Submit").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the form from submitting the default way
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: document.getElementById("title").value,
+            body: document.getElementById("body").value
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data submitted successfully:', data);
+        alert(`Data submitted successfully! \n title: ${data.title} \n body: ${data.body}`);
+        document.getElementById("form").reset();
+    })
+    .catch(error => 
+    {
+        console.error('Error submitting data:', error)
+    })
+
+})
