@@ -4,21 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Lab10 API Calls</title>
 </head>
 <body>
+    <section id="Results">
+    <h1>Results:</h1>
+    <div id="display_text">
+        <h2></h2>
+        <p></p>
+    </div>
+
+    <div id="buttons">
     <button id="fetch()">Fetch Data w/ fetch()</button>
     <button id="XHR">Fetch Data w/ XHR</button>
-    <div id="display_text">
-
+    <br><br>
     </div>
+    </section>
+
     <form id="form">
-        <label>ID:</label>
+        <h2>Form Submit/Update</h3>
+        <label>ID:</label><br>
         <input type="text" id="id"><br><br>
-        <label>Title:</label>
+        <label>Title:</label><br>
         <input type="text" id="title"><br><br>
-        <label>Body:</label>
-        <input id="body"><br><br>
+        <label>Body:</label><br>
+        <input id="body" type="text"><br><br>
         <button id="Submit">Submit</button>
         <button id="Update">Update</button>
     </form>

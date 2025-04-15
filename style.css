@@ -1,0 +1,55 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+    background-color: rgb(226, 218, 241);
+    border-radius: 5px;
+    padding: 5px;
+}
+section{
+    padding: 15px;
+    margin-left: 20px;
+    box-shadow: 5px 5px 10px rgb(126, 126, 126);
+    margin-right: 100px;
+    border-radius: 5px;
+    padding-bottom: 80px;
+    margin-top: 50px;
+}
+button:hover{
+    background-color: rgb(196, 190, 210);
+}
+
+#buttons{
+    margin-top: 80px;
+}
+
+#XHR{
+    margin-left: 20px;
+}
+
+form{
+    padding: 10px;
+    margin-left: 20px;
+    box-shadow: 5px 5px 10px rgb(126, 126, 126);
+    margin-right: 100px;
+    border-radius: 5px;
+    margin-top: 65px;
+    padding-bottom: 30px;
+}
+
+input[type="text"]{
+    padding: 5px;
+    margin: 5px 0 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgb(126, 126, 126);
+    width: 99%;
+}
+
+#Update{
+    margin-left: 55px;
+    width: 100px;
+}
+#Submit{
+    width: 100px;
+}
